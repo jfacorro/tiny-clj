@@ -33,6 +33,9 @@
   (ANY "*" []
     (route/not-found (slurp (io/resource "404.html")))))
 
+(-> 1
+  (= 2))
+
 (defn -main [& [port]]
   (let [port (Integer. (or port (env :port) 5000))]
     (jetty/run-jetty (site #'app) {:port port :join? false})))
