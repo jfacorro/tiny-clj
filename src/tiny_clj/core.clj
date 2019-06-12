@@ -7,6 +7,8 @@
             [environ.core :refer [env]]
             [net.cgrand.enlive-html :as html]))
 
+(= 1) 
+
 (html/deftemplate base "templates/main.html"
   [title h1]
   [:head :title] (html/content title)
@@ -30,6 +32,11 @@
     (login))
   (ANY "*" []
     (route/not-found (slurp (io/resource "404.html")))))
+
+(-> 1
+  (= 2))
+
+(.stop (Thread.))
 
 (defn -main [& [port]]
   (let [port (Integer. (or port (env :port) 5000))]
